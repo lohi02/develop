@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>      
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }      
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #eae7e7;
+            background-image: linear-gradient(70deg,  rgb(13, 36, 80), rgb(17, 32, 71));
+        } 
+        .clock {
+            width: 400px;
+            height: 400px;
+            background-image: url(C://Users//HP//OneDrive//Pictures//clock.jpg);
+            background-size: cover;
+            box-shadow: 0 3em 5.8em;
+            border-radius: 50%;
+            position: relative;
+        }
+        
+        .hr,
+        .min,
+        .sec {
+            width: 1%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -100%);
+            transform-origin: bottom;
+            z-index: 2;
+            border-radius: 2em;
+        }
+        
+        .pin {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 1em;
+            height: 1em;
+            background: rgb(235, 236, 238);
+            border: 2px solid #e6e8eb;
+            border-radius: 10em;
+            margin: auto;
+            z-index: 10;
+        }        
+        .hr {
+            height: 25%;
+            background-color: #ea1313;
+        }
+        
+        .min {
+            height: 30%;
+            background-color: whitesmoke ;
+        }
+        
+        .sec {
+            height: 40%;
+            background-color: #5936e8;
+            transform-origin: 50% 85%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clock">
+        <div class="hr"></div>
+        <div class="min"></div>
+        <div class="sec"></div>
+        <div class="pin"></div>
+    </div>
+
+    <script>
+       
+        const hr = document.querySelector('.hr')
+        const min = document.querySelector('.min')
+        const sec = document.querySelector('.sec')
+        
+       
+        setInterval(() => {
+    
+            let day = new Date()
+            let hour = day.getHours()
+            let minutes = day.getMinutes()
+            let seconds = day.getSeconds()
+            let hrrotation = (30 * hour) + (0.5 * minutes);
+            let minrotation = 6 * minutes;
+            let secrotation = 6 * seconds;
+        
+            hr.style.transform =
+                `translate(-50%,-100%) rotate(${hrrotation}deg)`
+            min.style.transform =
+                `translate(-50%,-100%) rotate(${minrotation}deg)`
+            sec.style.transform =
+                `translate(-50%,-85%) rotate(${secrotation}deg)`
+        });
+    </script>
+</body>
+
+</html>
